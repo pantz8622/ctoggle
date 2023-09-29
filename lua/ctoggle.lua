@@ -10,18 +10,20 @@ local function qf_isopen()
   return r
 end
 
-M.ctoggle = function ()
-  if qf_isopen() then
-    vim.cmd "cclose"
-  else
-    vim.cmd "copen"
+M.setup = function()
+  M.ctoggle = function ()
+    if qf_isopen() then
+      vim.cmd "cclose"
+    else
+      vim.cmd "copen"
+    end
   end
-end
 
-M.cc_wo_focus = function()
-  local qfwin = vim.api.nvim_get_current_win();
-  vim.cmd ".cc"
-  vim.api.nvim_set_current_win(qfwin)
+  M.cc_wo_focus = function()
+    local qfwin = vim.api.nvim_get_current_win();
+    vim.cmd ".cc"
+    vim.api.nvim_set_current_win(qfwin)
+  end
 end
 
 return M
